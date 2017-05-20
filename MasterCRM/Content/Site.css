@@ -1,5 +1,6 @@
-﻿.page-footer{
- position:fixed;
- bottom:0;
- left:0;
-}
+﻿/* cellpadding */
+th, td { padding: 5px; }
+
+/* cellspacing */
+table { border-collapse: separate; border-spacing: 5px; } /* cellspacing="5" */
+table { border-collapse: collapse; border-spacing: 0; } /* cellspacing="0" */
