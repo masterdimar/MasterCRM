@@ -8,6 +8,11 @@ namespace MasterCRM.Controllers
 {
     public class ContactsController : Controller
     {
+        public ActionResult Contacts()
+        {
+            return View();
+        }
+
         public JsonResult GetContacts(string sFiltro
                                         , FormCollection oCollection)
         {

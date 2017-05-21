@@ -438,12 +438,19 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery.slimscroll.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Views\Contacts.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\CampaignsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\FeedsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeadsController.cs" />
+    <Compile Include="Controllers\OportunitiesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -458,6 +465,13 @@
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Contacts\Contacts.cshtml" />
+    <Content Include="Views\Leads\Leads.cshtml" />
+    <Content Include="Views\Feeds\Feeds.cshtml" />
+    <Content Include="Views\Accounts\Accounts.cshtml" />
+    <Content Include="Views\Campaigns\Campaigns.cshtml" />
+    <Content Include="Views\Tasks\Tasks.cshtml" />
+    <Content Include="Views\Oportunities\Oportunities.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -467,7 +481,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Contacts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MasterCRM_BS\MasterCRM_BS.csproj">
+      <Project>{63c7b4e7-fd61-4bf2-bb40-e83ba844f1fb}</Project>
+      <Name>MasterCRM_BS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MasterCRM_Entities\MasterCRM_Entities.csproj">
+      <Project>{60c88266-b973-40b9-b277-011fb8a04ce1}</Project>
+      <Name>MasterCRM_Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

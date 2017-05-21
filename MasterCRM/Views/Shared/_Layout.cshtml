@@ -48,6 +48,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
+@{string ctrollerName = ViewContext.RouteData.Values["controller"].ToString();}
 
 <body class="hold-transition skin-blue sidebar-mini fixed sidebar-collapse">
     <div class="wrapper">
@@ -220,19 +221,19 @@ desired effect
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
-
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu">
                     <!-- Optionally, you can add icons to the links -->
-                    <li><a href="#"><i class="fa fa-rss"></i> <span>Feeds</span></a></li>
-                    <li class="active"><a href="#"><i class="fa fa-address-card"></i> <span>Leads</span></a></li>
-                    <li><a href="#"><i class="fa fa-building"></i> <span>Accounts</span></a></li>
-                    <li><a href="#"><i class="fa fa-user"></i> <span>Contacts</span></a></li>
-                    <li><a href="#"><i class="fa fa-briefcase"></i> <span>Oportunities</span></a></li>
-                    <li><a href="#"><i class="fa fa-bullhorn"></i> <span>Campaigns</span></a></li>
-                    <li><a href="#"><i class="fa fa-tasks"></i> <span>Tasks</span></a></li>
+                    <li @if(ctrollerName == "Home"){<text> class="active"</text>}><a href="@Url.Action("Home", "Home")"><i class="fa fa-home"></i> <span>Home</span></a></li>
+                    <li @if (ctrollerName == "Feeds") { <text> class="active" </text> }><a href="@Url.Action("Feeds", "Feeds")"><i class="fa fa-rss"></i> <span>Feeds</span></a></li>
+                    <li @if (ctrollerName == "Leads") { <text> class="active" </text> }><a href="@Url.Action("Leads", "Leads")"><i class="fa fa-address-card"></i> <span>Leads</span></a></li>
+                    <li @if (ctrollerName == "Accounts") { <text> class="active" </text> }><a href="@Url.Action("Accounts", "Accounts")"><i class="fa fa-building"></i> <span>Accounts</span></a></li>
+                    <li @if (ctrollerName == "Contacts") { <text> class="active" </text> }><a href="@Url.Action("Contacts", "Contacts")"><i class="fa fa-user"></i> <span>Contacts</span></a></li>
+                    <li @if (ctrollerName == "Oportunities") { <text> class="active" </text> }><a href="@Url.Action("Oportunities", "Oportunities")"><i class="fa fa-briefcase"></i> <span>Oportunities</span></a></li>
+                    <li @if (ctrollerName == "Campaigns") { <text> class="active" </text> }><a href="@Url.Action("Campaigns", "Campaigns")"><i class="fa fa-bullhorn"></i> <span>Campaigns</span></a></li>
+                    <li @if (ctrollerName == "Tasks") { <text> class="active" </text> }><a href="@Url.Action("Tasks", "Tasks")"><i class="fa fa-tasks"></i> <span>Tasks</span></a></li>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
