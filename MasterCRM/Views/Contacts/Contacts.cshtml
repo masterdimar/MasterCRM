@@ -101,20 +101,18 @@
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
 
-<script src="~/Scripts/Views/Contacts.js"></script>
-
 <script>
-  $(function () {
-      tabContacts = $('#tabContacts').DataTable({
-          "bProcessing": false,
-          "sAjaxSource": '@Url.Action("GetContacts", "Contacts")',
-          "iDisplayLength": 10,
-          "bFilter": false,
-          "sServerMethod": "POST",
-          "bServerSide": true,
-          "sDom": '<"responsive_scroll"t><"row-fluid" <"span4"l><"span3"i><"span5"p>>',
-          "aaSorting": [[0, "desc"]],
-          "aoColumns": [
+    $(function () {
+        tabContacts = $('#tabContacts').DataTable({
+            "bProcessing": false,
+            "sAjaxSource": '@Url.Action("GetContacts", "Contacts")',
+            "iDisplayLength": 10,
+            "bFilter": false,
+            "sServerMethod": "POST",
+            "bServerSide": true,
+            "sDom": '<"responsive_scroll"t><"row-fluid" <"span4"l><"span3"i><"span5"p>>',
+            "aaSorting": [[0, "desc"]],
+            "aoColumns": [
                             { "mDataProp": "Name" },
                             { "mDataProp": "Account" },
                             { "mDataProp": "Email" },
@@ -122,12 +120,10 @@
                             { "mDataProp": "Phone" },
                             { "mDataProp": "Owner" }
                         ]
+        });
     });
-  });
 
-    function FiltrarGrilla()
-    {
+    function FiltrarGrilla() {
         tabContacts.ajax.reload();
     }
 </script>
-

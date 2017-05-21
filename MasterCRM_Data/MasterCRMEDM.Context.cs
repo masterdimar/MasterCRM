@@ -25,8 +25,11 @@ namespace MasterCRM_Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Clientes> Cliente { get; set; }
-        public virtual DbSet<Contactos> Contacto { get; set; }
-        public virtual DbSet<Cuentas> Cuenta { get; set; }
+        public virtual DbSet<Cliente> Clientes { get; set; }
+        public virtual DbSet<Contacto> Contactoes { get; set; }
+        public virtual DbSet<Cuenta> Cuentas { get; set; }
+        public virtual DbSet<SectorCuenta> SectorCuentas { get; set; }
+        public virtual DbSet<TipoCuenta> TipoCuentas { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

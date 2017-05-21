@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -66,32 +70,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Clientes.cs">
-      <DependentUpon>MasterCRMModel.tt</DependentUpon>
+    <Compile Include="AccountsDB.cs" />
+    <Compile Include="Cliente.cs">
+      <DependentUpon>MasterCRMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contactos.cs">
-      <DependentUpon>MasterCRMModel.tt</DependentUpon>
+    <Compile Include="Contacto.cs">
+      <DependentUpon>MasterCRMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cuentas.cs">
-      <DependentUpon>MasterCRMModel.tt</DependentUpon>
+    <Compile Include="Cuenta.cs">
+      <DependentUpon>MasterCRMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="MasterCRMModel.Context.cs">
+    <Compile Include="MasterCRMEDM.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MasterCRMModel.Context.tt</DependentUpon>
+      <DependentUpon>MasterCRMEDM.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MasterCRMModel.cs">
+    <Compile Include="MasterCRMEDM.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MasterCRMModel.tt</DependentUpon>
+      <DependentUpon>MasterCRMEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="MasterCRMModel.Designer.cs">
+    <Compile Include="MasterCRMEDM.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MasterCRMModel.edmx</DependentUpon>
+      <DependentUpon>MasterCRMEDM.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SectorCuenta.cs">
+      <DependentUpon>MasterCRMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoCuenta.cs">
+      <DependentUpon>MasterCRMEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>MasterCRMEDM.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MasterCRM_Entities\MasterCRM_Entities.csproj">
@@ -101,12 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="MasterCRMModel.edmx">
+    <EntityDeploy Include="MasterCRMEDM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MasterCRMModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>MasterCRMEDM.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MasterCRMModel.edmx.diagram">
-      <DependentUpon>MasterCRMModel.edmx</DependentUpon>
+    <None Include="MasterCRMEDM.edmx.diagram">
+      <DependentUpon>MasterCRMEDM.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -118,15 +131,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>MasterCRMDatabase.mdf</DependentUpon>
     </Content>
-    <Content Include="MasterCRMModel.Context.tt">
+    <Content Include="MasterCRMEDM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MasterCRMModel.edmx</DependentUpon>
-      <LastGenOutput>MasterCRMModel.Context.cs</LastGenOutput>
+      <DependentUpon>MasterCRMEDM.edmx</DependentUpon>
+      <LastGenOutput>MasterCRMEDM.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MasterCRMModel.tt">
+    <Content Include="MasterCRMEDM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MasterCRMModel.edmx</DependentUpon>
-      <LastGenOutput>MasterCRMModel.cs</LastGenOutput>
+      <DependentUpon>MasterCRMEDM.edmx</DependentUpon>
+      <LastGenOutput>MasterCRMEDM.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

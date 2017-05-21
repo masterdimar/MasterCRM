@@ -12,19 +12,23 @@ namespace MasterCRM_Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Contactos
+    public partial class Usuario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Usuario()
+        {
+            this.Cuentas = new HashSet<Cuenta>();
+        }
+    
         public int ClienteID { get; set; }
-        public int ContactoID { get; set; }
+        public int UsuarioID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Email { get; set; }
-        public string Telefono { get; set; }
-        public string Mobil { get; set; }
-        public int PropietarioID { get; set; }
-        public int CuentaID { get; set; }
+        public string Activo { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
-        public virtual Cuentas Cuentas { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cuenta> Cuentas { get; set; }
     }
 }

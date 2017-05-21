@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MasterCRM_Entities
 {
-    public class Usuario
+    public class UsuarioEN
     {
-        public Cliente Cliente { get; set; }
+        public ClienteEN Cliente { get; set; }
         public int UsuarioID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

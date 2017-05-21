@@ -13,6 +13,8 @@ namespace MasterCRM
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Automapper.Inicializar();
         }
     }
 }

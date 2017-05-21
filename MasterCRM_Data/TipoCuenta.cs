@@ -12,24 +12,20 @@ namespace MasterCRM_Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Clientes
+    public partial class TipoCuenta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clientes()
+        public TipoCuenta()
         {
-            this.Contactos = new HashSet<Contactos>();
-            this.Cuentas = new HashSet<Cuentas>();
+            this.Cuentas = new HashSet<Cuenta>();
         }
     
-        public int ClienteID { get; set; }
-        public string Nombre { get; set; }
-        public Nullable<bool> Demo { get; set; }
-        public Nullable<System.DateTime> Vencimiento { get; set; }
-        public Nullable<int> Renovaciones { get; set; }
+        public int TipoCuentaID { get; set; }
+        public string Descripcion { get; set; }
+        public string Description { get; set; }
+        public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contactos> Contactos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cuentas> Cuentas { get; set; }
+        public virtual ICollection<Cuenta> Cuentas { get; set; }
     }
 }

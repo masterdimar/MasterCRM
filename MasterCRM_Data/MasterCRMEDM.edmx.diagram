@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92f1be4378884d7bac81e3a039bdbbca" Name="Diagram1">
+        <EntityTypeShape EntityType="MasterCRMDatabaseModel.Cliente" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterCRMDatabaseModel.Contacto" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterCRMDatabaseModel.Cuenta" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterCRMDatabaseModel.SectorCuenta" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterCRMDatabaseModel.TipoCuenta" Width="1.5" PointX="3.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasterCRMDatabaseModel.Usuario" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="MasterCRMDatabaseModel.FK_Contacto_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterCRMDatabaseModel.FK_Cuenta_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterCRMDatabaseModel.FK_Usuario_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterCRMDatabaseModel.FK_Contacto_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterCRMDatabaseModel.FK_Cuenta_SectorCuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterCRMDatabaseModel.FK_Cuenta_TipoCuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="MasterCRMDatabaseModel.FK_Cuenta_Usuario" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

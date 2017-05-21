@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace MasterCRM_Entities
 {
-    public class Cuenta
+    public class AccountEN
     {
-        public Cliente Cliente { get; set; }
+        public ClienteEN Cliente { get; set; }
         public int CuentaID { get; set; }
         public string Nombre { get; set; }
+        public AccountTypeEN TipoCuenta { get; set; }
+        public AccountSectorEN SectorCuenta { get; set; }
         public string Web { get; set; }
         public string Telefono { get; set; }
         public int Empleados { get; set; }
-        public Usuario Propietario { get; set; }
+        public UsuarioEN Propietario { get; set; }
     }
 }
