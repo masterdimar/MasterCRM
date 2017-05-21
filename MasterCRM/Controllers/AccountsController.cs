@@ -31,12 +31,7 @@ namespace MasterCRM.Controllers
                                                                     , oCollection.Get("sSortDir_0"));
             AutoMapper.Mapper.Initialize(cfg => {
                 cfg.CreateMap<AccountEN, AccountsGridModel>()
-                  .ForMember(dest => dest.AccountID, opt => opt.MapFrom(src => src.CuentaID))
-                  .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Nombre))
-                  .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.Propietario.Apellido + " " + src.Propietario.Nombre))
-                  .ForMember(dest => dest.Sector, opt => opt.MapFrom(src => src.SectorCuenta.Descripcion))
-                  .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.TipoCuenta.Descripcion))
-                  .ForMember(dest => dest.Web, opt => opt.MapFrom(src => src.Web));
+                  .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.Propietario.Apellido + " " + src.Propietario.Nombre));
             });
 
             AutoMapper.Mapper.Map(oAccountsEN, oAccounts);   
