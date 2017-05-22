@@ -9,28 +9,39 @@ namespace MasterCRM_Data
 {
     public static class AccountsDB
     {
-        public static List<AccountEN> GetAccounts(ref int iTotal
+        public static List<AccountEN> GetAccounts(string sAccountName
+                                                    , int[] aAccountTypes
+                                                    , int[] aAccountSector
+                                                    , string sWeb
+                                                    , string sOwner
+                                                    , ref int iTotal
                                                     , ref int iTotalFiltered
                                                     , int iColumnSort
                                                     , string sSortDir)
         {
-            List<AccountEN> oAccounts = new List<AccountEN>();            
+            bool aAccountTypesEmpty = aAccountTypes.Length == 0 ? true : false;
+            bool aAccountSectorsEmpty = aAccountSector.Length == 0 ? true : false;
 
-            MasterCRMDatabase oEF = new MasterCRMDatabase();
-            List<Cuenta> oCuentasEF = oEF.Cuentas.ToList<Cuenta>();
+            MasterCRMDatabase oEF = new MasterCRMDatabase();            
+            IEnumerable<Cuenta> oCuentasEF = oEF.Cuentas;            
+            iTotal = oCuentasEF.Count();
 
-            AutoMapper.Mapper.Initialize(cfg => {
-                cfg.CreateMap<Cliente, ClienteEN>();
-                cfg.CreateMap<Usuario, UsuarioEN>();
-                cfg.CreateMap<SectorCuenta, AccountSectorEN>();
-                cfg.CreateMap<TipoCuenta, AccountTypeEN>();
-                cfg.CreateMap<Cuenta, AccountEN>()
-                    .ForMember(dest => dest.Propietario, opt => opt.MapFrom(src => src.Usuario));
-            });
+            oCuentasEF = oEF.Cuentas
+                        .Where(CTA => 
+                                        (CTA.Nombre.Contains(sAccountName) || String.IsNullOrEmpty(sAccountName))
+                                        &&
+                                        (aAccountTypesEmpty || aAccountTypes.Contains(CTA.TipoCuentaID))
+                                        &&
+                                        (aAccountSectorsEmpty || aAccountSector.Contains(CTA.SectorCuentaID))
+                                        &&
+                                        (CTA.Web.Contains(sWeb) || String.IsNullOrEmpty(sWeb))
+                                        &&
+                                        (CTA.Web.Contains(sOwner) || String.IsNullOrEmpty(sOwner))
+                              )
+                        ;
 
-            AutoMapper.Mapper.Map(oCuentasEF, oAccounts);
+            List<AccountEN> oAccounts = AutomapperConfiguration.mapper.Map<List<AccountEN>>(oCuentasEF);
 
-            iTotal = oAccounts.Count();
             iTotalFiltered = oAccounts.Count();
 
             switch (iColumnSort)

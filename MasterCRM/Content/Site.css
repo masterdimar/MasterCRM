@@ -4,3 +4,14 @@ th, td { padding: 5px; }
 /* cellspacing */
 table { border-collapse: separate; border-spacing: 5px; } /* cellspacing="5" */
 table { border-collapse: collapse; border-spacing: 0; } /* cellspacing="0" */
+
+
+
+
+.blocks .btn-primary 
+{
+    padding: 24px 12px;
+    border-radius: 0;
+
+}
+.blocks {border-spacing:1px;}

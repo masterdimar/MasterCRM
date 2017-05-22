@@ -26,7 +26,7 @@ namespace MasterCRM_Data
         }
     
         public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<Contacto> Contactoes { get; set; }
+        public virtual DbSet<Contacto> Contactos { get; set; }
         public virtual DbSet<Cuenta> Cuentas { get; set; }
         public virtual DbSet<SectorCuenta> SectorCuentas { get; set; }
         public virtual DbSet<TipoCuenta> TipoCuentas { get; set; }

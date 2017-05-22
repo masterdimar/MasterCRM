@@ -71,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountsDB.cs" />
+    <Compile Include="AccountSectorsDB.cs" />
+    <Compile Include="AccountTypesDB.cs" />
+    <Compile Include="AutomapperConfiguration.cs" />
     <Compile Include="Cliente.cs">
       <DependentUpon>MasterCRMEDM.tt</DependentUpon>
     </Compile>

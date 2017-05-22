@@ -8,7 +8,7 @@ namespace MasterCRM_Entities
 {
     public class AccountSectorEN
     {
-        public int CuentaSectorID { get; set; }
+        public int SectorCuentaID { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
     }

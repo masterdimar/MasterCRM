@@ -14,7 +14,8 @@ namespace MasterCRM
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            Automapper.Inicializar();
+            AutomapperConfiguration.Inicializar();
+            MasterCRM_BS.AutomapperConfiguration.Inicializar();
         }
     }
 }

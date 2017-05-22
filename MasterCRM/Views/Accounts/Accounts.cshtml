@@ -1,4 +1,5 @@
-﻿
+﻿@model MasterCRM.Models.AccountsViewModel
+
 @{
     ViewBag.Title = "Accounts";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -65,34 +66,45 @@
                     <form role="form" style="padding-right: 2px; padding-left: 2px">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            <input id="txtName" type="text" class="form-control" placeholder="Enter ...">
                         </div>
                         <div class="form-group">
                             <label>Type</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            @Html.DropDownList("ddlAccountType", new SelectList((System.Collections.IEnumerable)ViewData["AccountTypes"], "TipoCuentaID", "Descripcion"), new { @class = "form-control", @multiple = "" })
                         </div>
                         <div class="form-group">
                             <label>Web</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            <input id="txtWeb" type="text" class="form-control" placeholder="Enter ...">
                         </div>
                         <div class="form-group">
                             <label>Sector</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            @Html.DropDownList("ddlAccountSector", new SelectList((System.Collections.IEnumerable)ViewData["AccountSectors"], "SectorCuentaID", "Descripcion"), new { @class = "form-control", @multiple = "" })
                         </div>
                         <div class="form-group">
                             <label>Owner</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            <input id="txtOwner" type="text" class="form-control" placeholder="Enter ...">
                         </div>
                     </form>
                 </li>
-            </ul>
-
-            <a class="btn btn-app" data-toggle="control-sidebar" onclick="FiltrarGrilla()">
-                <i class="fa fa-filter"></i> Filter
-            </a>
-            <a class="btn btn-app" data-toggle="control-sidebar">
-                <i class="fa fa-ban"></i> Cancel
-            </a>
+                <br />
+                <li>
+                    <form role="form" style="padding-right: 2px; padding-left: 2px">
+                        <div class="form-group">
+                            <div class="btn-group btn-group-justified blocks">
+                                <a class="btn btn-default" data-toggle="control-sidebar" onclick="FiltrarGrilla()">
+                                    <i class="fa fa-filter"> Filter</i>
+                                </a>
+                                <a class="btn btn-default" onclick="Reset()">
+                                    <i class="fa fa-eraser"> Reset</i>   
+                                </a>
+                                <a class="btn btn-default" data-toggle="control-sidebar">
+                                    <i class="fa fa-close"> Close</i>                                    
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </li>
+            </ul>            
             <!-- /.control-sidebar-menu -->
 
         </div>
@@ -107,7 +119,7 @@
 <script>
     $(function () {
         tabAccounts = $('#tabAccounts').DataTable({
-            "bProcessing": false,
+            "bProcessing": true,
             "sAjaxSource": '@Url.Action("GetAccounts", "Accounts")',
             "iDisplayLength": 10,
             "bFilter": false,
@@ -121,11 +133,27 @@
                             { "mDataProp": "Web" },
                             { "mDataProp": "SectorCuentaDescripcion" },
                             { "mDataProp": "Owner" }
-                        ]
+            ],
+            "fnServerParams": function (aoData) {
+                aoData.push({ "name": "AccountName", "value": $("#txtName").val() });
+                aoData.push({ "name": "AccountType", "value": $("#ddlAccountType").val() });
+                aoData.push({ "name": "AccountSector", "value": $("#ddlAccountSector").val() });
+                aoData.push({ "name": "Web", "value": $("#txtWeb").val() });
+                aoData.push({ "name": "Owner", "value": $("#txtOwner").val() });
+            }
         });
     });
 
     function FiltrarGrilla() {
         tabAccounts.ajax.reload();
+    }
+
+    function Reset()
+    {
+        $("#txtName").val("");
+        $("#ddlAccountType").val("");
+        $("#ddlAccountSector").val("");
+        $("#txtWeb").val("");
+        $("#txtOwner").val("");
     }
 </script>

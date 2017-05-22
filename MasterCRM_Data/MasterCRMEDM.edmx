@@ -363,14 +363,14 @@
         </Association>
         <EntityContainer Name="MasterCRMDatabase" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clientes" EntityType="Self.Cliente" />
-          <EntitySet Name="Contactoes" EntityType="Self.Contacto" />
+          <EntitySet Name="Contactos" EntityType="Self.Contacto" />
           <EntitySet Name="Cuentas" EntityType="Self.Cuenta" />
           <EntitySet Name="SectorCuentas" EntityType="Self.SectorCuenta" />
           <EntitySet Name="TipoCuentas" EntityType="Self.TipoCuenta" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <AssociationSet Name="FK_Contacto_Cliente" Association="Self.FK_Contacto_Cliente">
             <End Role="Cliente" EntitySet="Clientes" />
-            <End Role="Contacto" EntitySet="Contactoes" />
+            <End Role="Contacto" EntitySet="Contactos" />
           </AssociationSet>
           <AssociationSet Name="FK_Cuenta_Cliente" Association="Self.FK_Cuenta_Cliente">
             <End Role="Cliente" EntitySet="Clientes" />
@@ -382,7 +382,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_Contacto_Cuenta" Association="Self.FK_Contacto_Cuenta">
             <End Role="Cuenta" EntitySet="Cuentas" />
-            <End Role="Contacto" EntitySet="Contactoes" />
+            <End Role="Contacto" EntitySet="Contactos" />
           </AssociationSet>
           <AssociationSet Name="FK_Cuenta_SectorCuenta" Association="Self.FK_Cuenta_SectorCuenta">
             <End Role="SectorCuenta" EntitySet="SectorCuentas" />
@@ -428,7 +428,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Contactoes">
+          <EntitySetMapping Name="Contactos">
             <EntityTypeMapping TypeName="MasterCRMDatabaseModel.Contacto">
               <MappingFragment StoreEntitySet="Contacto">
                 <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />

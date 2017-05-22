@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountsBS.cs" />
+    <Compile Include="AccountSectorsBS.cs" />
+    <Compile Include="AccountTypesBS.cs" />
+    <Compile Include="AutomapperConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

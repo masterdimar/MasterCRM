@@ -454,7 +454,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Automapper.cs" />
+    <Compile Include="AutomapperConfiguration.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CampaignsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
@@ -466,8 +466,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountsViewModel.cs" />
     <Compile Include="Models\ContactsGridModel.cs" />
     <Compile Include="Models\AccountsGridModel.cs" />
+    <Compile Include="Models\DropdownlistModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

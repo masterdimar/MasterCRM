@@ -14,27 +14,42 @@ namespace MasterCRM.Controllers
         // GET: Accounts
         public ActionResult Accounts()
         {
+            ViewData.Add("AccountTypes", AccountTypesBS.GetAccountTypes().OrderBy(ACT => ACT.Descripcion));
+            ViewData.Add("AccountSectors", AccountSectorsBS.GetAccountSectors().OrderBy(ACS => ACS.Descripcion));
             return View();
         }
 
-        public JsonResult GetAccounts(string sFiltro
-                                        , FormCollection oCollection)
+        public JsonResult GetAccounts(FormCollection oCollection)
         {
-            List<Models.AccountsGridModel> oAccounts = new List<Models.AccountsGridModel>();
+            int[] aAccountTypes = null;
+            int[] aAccountSector = null;
+
+            string sAccountName = oCollection.Get("AccountName");
+
+            if (oCollection.Get("AccountType[]") != null)
+                aAccountTypes = oCollection.Get("AccountType[]").Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+
+            if (oCollection.Get("AccountSector[]") != null)
+                aAccountSector = oCollection.Get("AccountSector[]").Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+
+            string sWeb = oCollection.Get("Web");
+            string sOwner = oCollection.Get("Owner");
+
             int iTotal = 0;
             int iTotalFiltered = 0;
 
             //Obtener Accounts
-            List<AccountEN> oAccountsEN = AccountsBS.GetAccounts(ref iTotal
+            List<AccountEN> oAccountsEN = AccountsBS.GetAccounts(sAccountName
+                                                                    , aAccountTypes
+                                                                    , aAccountSector
+                                                                    , sWeb
+                                                                    , sOwner
+                                                                    , ref iTotal
                                                                     , ref iTotalFiltered
                                                                     , int.Parse(oCollection.Get("iSortCol_0"))
                                                                     , oCollection.Get("sSortDir_0"));
-            AutoMapper.Mapper.Initialize(cfg => {
-                cfg.CreateMap<AccountEN, AccountsGridModel>()
-                  .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.Propietario.Apellido + " " + src.Propietario.Nombre));
-            });
 
-            AutoMapper.Mapper.Map(oAccountsEN, oAccounts);   
+            List<AccountsGridModel> oAccounts = AutomapperConfiguration.mapper.Map<List<AccountsGridModel>>(oAccountsEN);   
 
             return Json(new
             {
