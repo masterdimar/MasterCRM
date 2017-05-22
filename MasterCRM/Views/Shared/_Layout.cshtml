@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>MasterCRM - @ViewBag.Title</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -207,7 +207,7 @@ desired effect
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="@Url.Action("Profile", "Profile")" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -226,14 +226,14 @@ desired effect
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu">
                     <!-- Optionally, you can add icons to the links -->
-                    <li @if(ctrollerName == "Home"){<text> class="active"</text>}><a href="@Url.Action("Home", "Home")"><i class="fa fa-home"></i> <span>Home</span></a></li>
-                    <li @if (ctrollerName == "Feeds") { <text> class="active" </text> }><a href="@Url.Action("Feeds", "Feeds")"><i class="fa fa-rss"></i> <span>Feeds</span></a></li>
-                    <li @if (ctrollerName == "Leads") { <text> class="active" </text> }><a href="@Url.Action("Leads", "Leads")"><i class="fa fa-address-card"></i> <span>Leads</span></a></li>
-                    <li @if (ctrollerName == "Accounts") { <text> class="active" </text> }><a href="@Url.Action("Accounts", "Accounts")"><i class="fa fa-building"></i> <span>Accounts</span></a></li>
-                    <li @if (ctrollerName == "Contacts") { <text> class="active" </text> }><a href="@Url.Action("Contacts", "Contacts")"><i class="fa fa-user"></i> <span>Contacts</span></a></li>
-                    <li @if (ctrollerName == "Oportunities") { <text> class="active" </text> }><a href="@Url.Action("Oportunities", "Oportunities")"><i class="fa fa-briefcase"></i> <span>Oportunities</span></a></li>
-                    <li @if (ctrollerName == "Campaigns") { <text> class="active" </text> }><a href="@Url.Action("Campaigns", "Campaigns")"><i class="fa fa-bullhorn"></i> <span>Campaigns</span></a></li>
-                    <li @if (ctrollerName == "Tasks") { <text> class="active" </text> }><a href="@Url.Action("Tasks", "Tasks")"><i class="fa fa-tasks"></i> <span>Tasks</span></a></li>
+                    <li @if(ctrollerName == "Home"){<text> class="active"</text>}><a href="@Url.Action("Home", "Home")"><i class="fa fa-home"></i> <span>@MasterCRM.Resources.MenuTexts.Home</span></a></li>
+                    <li @if (ctrollerName == "Feeds") { <text> class="active" </text> }><a href="@Url.Action("Feeds", "Feeds")"><i class="fa fa-rss"></i> <span>@MasterCRM.Resources.MenuTexts.Feeds</span></a></li>
+                    <li @if (ctrollerName == "Leads") { <text> class="active" </text> }><a href="@Url.Action("Leads", "Leads")"><i class="fa fa-address-card"></i> <span>@MasterCRM.Resources.MenuTexts.Leads</span></a></li>
+                    <li @if (ctrollerName == "Accounts") { <text> class="active" </text> }><a href="@Url.Action("Accounts", "Accounts")"><i class="fa fa-building"></i> <span>@MasterCRM.Resources.MenuTexts.Accounts</span></a></li>
+                    <li @if (ctrollerName == "Contacts") { <text> class="active" </text> }><a href="@Url.Action("Contacts", "Contacts")"><i class="fa fa-user"></i> <span>@MasterCRM.Resources.MenuTexts.Contacts</span></a></li>
+                    <li @if (ctrollerName == "Oportunities") { <text> class="active" </text> }><a href="@Url.Action("Oportunities", "Oportunities")"><i class="fa fa-briefcase"></i> <span>@MasterCRM.Resources.MenuTexts.Oportunities</span></a></li>
+                    <li @if (ctrollerName == "Campaigns") { <text> class="active" </text> }><a href="@Url.Action("Campaigns", "Campaigns")"><i class="fa fa-bullhorn"></i> <span>@MasterCRM.Resources.MenuTexts.Campaigns</span></a></li>
+                    <li @if (ctrollerName == "Tasks") { <text> class="active" </text> }><a href="@Url.Action("Tasks", "Tasks")"><i class="fa fa-tasks"></i> <span>@MasterCRM.Resources.MenuTexts.Tasks</span></a></li>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>

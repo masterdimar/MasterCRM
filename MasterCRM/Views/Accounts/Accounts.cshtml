@@ -1,16 +1,16 @@
 ﻿@model MasterCRM.Models.AccountsViewModel
 
 @{
-    ViewBag.Title = "Accounts";
+    ViewBag.Title = @MasterCRM.Resources.MenuTexts.Accounts;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="content-header">
     <h1>
-        Accounts
+        @MasterCRM.Resources.MenuTexts.Accounts
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-building"></i> Accounts</a></li>
+        <li><a href="#"><i class="fa fa-building"></i> @MasterCRM.Resources.MenuTexts.Accounts</a></li>
     </ol>
 </section>
 
@@ -21,7 +21,7 @@
         <div class="box-header">
             <div>
                 <div style="width: 80%; float:left">
-                    <button style="width: 50px" type="button" class="btn btn-block btn-default btn-sm">New</button>
+                    <button style="width: 50px" type="button" class="btn btn-block btn-default btn-sm" data-toggle="modal" data-target="#myModal">@MasterCRM.Resources.BotonesTexts.New</button>
                 </div>
                 <div style="width: 20%; float:right; text-align:right">
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-filter"></i></a>
@@ -33,11 +33,11 @@
             <table id="tabAccounts" class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Web</th>
-                        <th>Sector</th>
-                        <th>Owner</th>
+                        <th>@MasterCRM.Resources.AccountsTexts.Name</th>
+                        <th>@MasterCRM.Resources.AccountsTexts.Type</th>
+                        <th>@MasterCRM.Resources.AccountsTexts.Web</th>
+                        <th>@MasterCRM.Resources.AccountsTexts.Sector</th>
+                        <th>@MasterCRM.Resources.AccountsTexts.Owner</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -60,29 +60,29 @@
         <!-- Home tab content -->
         <div class="tab-pane active" id="control-sidebar-home-tab">
             <!-- /.control-sidebar-menu -->
-            <h3 class="control-sidebar-heading">Accounts Filters</h3>
+            <h3 class="control-sidebar-heading">@MasterCRM.Resources.AccountsTexts.Filter</h3>
             <ul class="control-sidebar-menu">
                 <li>
                     <form role="form" style="padding-right: 2px; padding-left: 2px">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input id="txtName" type="text" class="form-control" placeholder="Enter ...">
+                            <label>@MasterCRM.Resources.AccountsTexts.Name</label>
+                            <input id="txtName" type="text" class="form-control" placeholder=@MasterCRM.Resources.BotonesTexts.EnterValue>
                         </div>
                         <div class="form-group">
-                            <label>Type</label>
+                            <label>@MasterCRM.Resources.AccountsTexts.Type</label>
                             @Html.DropDownList("ddlAccountType", new SelectList((System.Collections.IEnumerable)ViewData["AccountTypes"], "TipoCuentaID", "Descripcion"), new { @class = "form-control", @multiple = "" })
                         </div>
                         <div class="form-group">
-                            <label>Web</label>
-                            <input id="txtWeb" type="text" class="form-control" placeholder="Enter ...">
+                            <label>@MasterCRM.Resources.AccountsTexts.Web</label>
+                            <input id="txtWeb" type="text" class="form-control" placeholder=@MasterCRM.Resources.BotonesTexts.EnterValue>
                         </div>
                         <div class="form-group">
-                            <label>Sector</label>
+                            <label>@MasterCRM.Resources.AccountsTexts.Sector</label>
                             @Html.DropDownList("ddlAccountSector", new SelectList((System.Collections.IEnumerable)ViewData["AccountSectors"], "SectorCuentaID", "Descripcion"), new { @class = "form-control", @multiple = "" })
                         </div>
                         <div class="form-group">
-                            <label>Owner</label>
-                            <input id="txtOwner" type="text" class="form-control" placeholder="Enter ...">
+                            <label>@MasterCRM.Resources.AccountsTexts.Owner</label>
+                            <input id="txtOwner" type="text" class="form-control" placeholder=@MasterCRM.Resources.BotonesTexts.EnterValue>
                         </div>
                     </form>
                 </li>
@@ -92,13 +92,13 @@
                         <div class="form-group">
                             <div class="btn-group btn-group-justified blocks">
                                 <a class="btn btn-default" data-toggle="control-sidebar" onclick="FiltrarGrilla()">
-                                    <i class="fa fa-filter"> Filter</i>
+                                    <i class="fa fa-filter"> @MasterCRM.Resources.BotonesTexts.Filter</i>
                                 </a>
                                 <a class="btn btn-default" onclick="Reset()">
-                                    <i class="fa fa-eraser"> Reset</i>   
+                                    <i class="fa fa-eraser"> @MasterCRM.Resources.BotonesTexts.Reset</i>   
                                 </a>
                                 <a class="btn btn-default" data-toggle="control-sidebar">
-                                    <i class="fa fa-close"> Close</i>                                    
+                                    <i class="fa fa-close"> @MasterCRM.Resources.BotonesTexts.Close</i>                                    
                                 </a>
                             </div>
                         </div>
@@ -126,6 +126,19 @@
             "sServerMethod": "POST",
             "bServerSide": true,
             "sDom": '<"responsive_scroll"t><"row-fluid" <"span4"l><"span3"i><"span5"p>>',
+            "language": {
+                            "lengthMenu": "@MasterCRM.Resources.GrillaTexts.lengthMenu",
+                            "zeroRecords": "@MasterCRM.Resources.GrillaTexts.zeroRecords",
+                            "info": "@MasterCRM.Resources.GrillaTexts.info",
+                            "infoEmpty": "@MasterCRM.Resources.GrillaTexts.infoEmpty",
+                            "infoFiltered": "@MasterCRM.Resources.GrillaTexts.infoFiltered",
+                            "oPaginate": {
+                                            "sFirst": "@MasterCRM.Resources.GrillaTexts.First",
+                                            "sPrevious": "@MasterCRM.Resources.GrillaTexts.Previous",
+                                            "sNext": "@MasterCRM.Resources.GrillaTexts.Next",
+                                            "sLast": "@MasterCRM.Resources.GrillaTexts.Last"
+                            }
+            },
             "aaSorting": [[0, "desc"]],
             "aoColumns": [
                             { "mDataProp": "Nombre" },

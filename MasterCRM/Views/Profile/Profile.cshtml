@@ -1,0 +1,39 @@
+﻿@model MasterCRM.Models.ProfileViewModel
+@{
+    ViewBag.Title = @MasterCRM.Resources.MenuTexts.Profile;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @MasterCRM.Resources.MenuTexts.Profile
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-user-secret"></i> @MasterCRM.Resources.MenuTexts.Profile</a></li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title">General Elements</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            @using (Html.BeginForm("Save", "Profile", FormMethod.Post, new { @class = "form" }))
+            {
+                <!-- text input -->
+                <div class="form-group">
+                    <label>@MasterCRM.Resources.ProfileTexts.Language</label>
+                    @Html.DropDownListFor(o => o.Language, new SelectList((System.Collections.IEnumerable)ViewData["Languages"], "Key", "Value", Model.Language), new { @class = "form-control" })
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-primary" type="submit">@MasterCRM.Resources.BotonesTexts.Submit</button>
+                </div>
+
+            } 
+        </div>
+        <!-- /.box-body -->
+    </div>
+</section>
