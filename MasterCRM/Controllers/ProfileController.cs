@@ -13,7 +13,7 @@ namespace MasterCRM.Controllers
         public ActionResult Profile()
         {
             ProfileViewModel oViewModel = new Models.ProfileViewModel();
-            oViewModel.Language = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            oViewModel.Language = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
 
             List<KeyValuePair<string, string>> oLanguages = new List<KeyValuePair<string, string>>();
             oLanguages.Add(new KeyValuePair<string, string>("en", "English"));

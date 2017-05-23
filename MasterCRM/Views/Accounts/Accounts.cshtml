@@ -10,7 +10,7 @@
         @MasterCRM.Resources.MenuTexts.Accounts
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-building"></i> @MasterCRM.Resources.MenuTexts.Accounts</a></li>        
+        <li><a href="#"><i class="fa fa-building"></i> @MasterCRM.Resources.MenuTexts.Accounts</a></li>        
     </ol>
 </section>
 
@@ -21,7 +21,7 @@
         <div class="box-header">
             <div>
                 <div style="width: 80%; float:left">
-                    <button style="width: 50px" type="button" class="btn btn-block btn-default btn-sm" data-toggle="modal" data-target="#myModal">@MasterCRM.Resources.BotonesTexts.New</button>
+                    <button id="btnNew" style="width: 50px" type="button" class="btn btn-block btn-default btn-sm" data-toggle="modal" data-target="#myModal">@MasterCRM.Resources.BotonesTexts.New</button>
                 </div>
                 <div style="width: 20%; float:right; text-align:right">
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-filter"></i></a>
@@ -49,10 +49,8 @@
 </section>
 
 <!-- Modals -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        @Html.Partial("_AccountsDetail", new MasterCRM.Models.AccountsAddEditModel())
-    </div>
+<div class="modal fade" id="AccountDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-url="@Url.Action("GetAccountDetail")" aria-hidden="true">
+    <div id="divAccountDetail"></div>
 </div>
 
 <!-- Control Sidebar -->
@@ -123,6 +121,30 @@
 <div class="control-sidebar-bg"></div>
 
 <script>
+    $(document).ready(function () {
+        $('#btnNew').click(function () {
+            var url = $('#AccountDetailModal').data('url');
+
+            $.get(url, function (data) {
+                $('#divAccountDetail').html(data);
+
+                $('#AccountDetailModal').modal('show');
+            });
+        });
+    });
+
+    function OpenAccountDetail(id)
+    {
+        var url = '@Url.Action("GetAccountDetail", "Accounts", new { id = "idValue" })';
+        url = url.replace("idValue", id);
+
+        $.get(url, function (data) {
+            $('#divAccountDetail').html(data);
+
+            $('#AccountDetailModal').modal('show');
+        });
+    }
+
     $(function () {
         tabAccounts = $('#tabAccounts').DataTable({
             "bProcessing": true,
@@ -147,8 +169,19 @@
             },
             "aaSorting": [[0, "desc"]],
             "aoColumns": [
-                            { "mDataProp": "Nombre" },
-                            { "mDataProp": "TipoCuentaDescripcion" },
+                            {
+                                "mDataProp": "Nombre",
+                                "render": function (data, type, row, meta)
+                                {
+                                    if (type === 'display')
+                                    {
+                                        
+                                        data = '<a href="#" onclick="OpenAccountDetail(' + row.CuentaID + ');">' + data + '</a>';
+                                    }
+                                    return data;
+                                }
+                            },
+                            { "mDataProp": "TipoCuentaDescripcion"},
                             { "mDataProp": "Web" },
                             { "mDataProp": "SectorCuentaDescripcion" },
                             { "mDataProp": "Owner" }
@@ -159,7 +192,7 @@
                 aoData.push({ "name": "AccountSector", "value": $("#ddlAccountSector").val() });
                 aoData.push({ "name": "Web", "value": $("#txtWeb").val() });
                 aoData.push({ "name": "Owner", "value": $("#txtOwner").val() });
-            }
+            },
         });
     });
 

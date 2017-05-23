@@ -551,6 +551,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AccountsDetail\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MasterCRM_BS\MasterCRM_BS.csproj">

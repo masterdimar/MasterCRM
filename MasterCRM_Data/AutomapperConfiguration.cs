@@ -22,7 +22,7 @@ namespace MasterCRM_Data
                     .ForMember(dest => dest.Propietario, opt => opt.MapFrom(src => src.Usuario));
 
                 cfg.CreateMap<SectorCuenta, AccountSectorEN>();
-                cfg.CreateMap<TipoCuenta, AccountTypeEN>();
+                cfg.CreateMap<TipoCuenta, AccountTypeEN>();               
                 cfg.CreateMap<Usuario, UsuarioEN>();
             });
 

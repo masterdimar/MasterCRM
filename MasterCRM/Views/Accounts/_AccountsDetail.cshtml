@@ -1,41 +1,43 @@
 ﻿@model MasterCRM.Models.AccountsAddEditModel
 
-<div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Account Detail</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <form role="form">
-        <div class="modal-body">
-            <div class="box-body">
-                <div class="form-group required">
-                    <label>@MasterCRM.Resources.AccountsTexts.Name</label>
-                    @Html.TextBoxFor(o => o.Name, new { @class = "form-control", @placeholder = @MasterCRM.Resources.BotonesTexts.EnterValue })
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Account Detail</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form role="form">
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="form-group required">
+                        <label>@MasterCRM.Resources.AccountsTexts.Name</label>
+                        @Html.TextBoxFor(o => o.Name, new { @class = "form-control", @placeholder = @MasterCRM.Resources.BotonesTexts.EnterValue })
+                    </div>
+                    <div class="form-group">
+                        <label>@MasterCRM.Resources.AccountsTexts.Type</label>
+                        @Html.DropDownListFor(o => o.TipoID, new SelectList((System.Collections.IEnumerable)ViewData["AccountTypes"], "TipoCuentaID", "Descripcion"), @MasterCRM.Resources.AccountsTexts.EmptyType, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>@MasterCRM.Resources.AccountsTexts.Web</label>
+                        @Html.TextBoxFor(o => o.Web, new { @class = "form-control", @placeholder = @MasterCRM.Resources.BotonesTexts.EnterValue })
+                    </div>
+                    <div class="form-group">
+                        <label>@MasterCRM.Resources.AccountsTexts.Sector</label>
+                        @Html.DropDownListFor(o => o.SectorID, new SelectList((System.Collections.IEnumerable)ViewData["AccountSectors"], "SectorCuentaID", "Descripcion"), @MasterCRM.Resources.AccountsTexts.EmptySector, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group required">
+                        <label>@MasterCRM.Resources.AccountsTexts.Owner</label>
+                        @Html.TextBoxFor(o => o.OwnerID, new { @class = "form-control", @placeholder = @MasterCRM.Resources.BotonesTexts.EnterValue })
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>@MasterCRM.Resources.AccountsTexts.Type</label>
-                    @Html.DropDownListFor(o => o.TipoID, new SelectList((System.Collections.IEnumerable)ViewData["AccountTypes"], "TipoCuentaID", "Descripcion"), new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    <label>@MasterCRM.Resources.AccountsTexts.Web</label>
-                    @Html.TextBoxFor(o => o.Web, new { @class = "form-control", @placeholder = @MasterCRM.Resources.BotonesTexts.EnterValue })
-                </div>
-                <div class="form-group">
-                    <label>@MasterCRM.Resources.AccountsTexts.Sector</label>
-                    @Html.DropDownListFor(o => o.SectorID, new SelectList((System.Collections.IEnumerable)ViewData["AccountSectors"], "SectorCuentaID", "Descripcion"), new { @class = "form-control" })
-                </div>
-                <div class="form-group required">
-                    <label>@MasterCRM.Resources.AccountsTexts.Owner</label>
-                    @Html.TextBoxFor(o => o.OwnerID, new { @class = "form-control", @placeholder = @MasterCRM.Resources.BotonesTexts.EnterValue })
-                </div>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-    </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+    </div>
 </div>

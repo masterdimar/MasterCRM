@@ -11,6 +11,6 @@ namespace MasterCRM_BS
         public static void Inicializar()
         {
             MasterCRM_Data.AutomapperConfiguration.Inicializar();
-        }
+        }       
     }
 }

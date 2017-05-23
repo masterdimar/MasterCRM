@@ -61,6 +61,24 @@ namespace MasterCRM.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to --Select Account Sector--.
+        /// </summary>
+        public static string EmptySector {
+            get {
+                return ResourceManager.GetString("EmptySector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Select Account Type--.
+        /// </summary>
+        public static string EmptyType {
+            get {
+                return ResourceManager.GetString("EmptyType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accounts Filers.
         /// </summary>
         public static string Filter {

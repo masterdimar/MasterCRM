@@ -13,9 +13,8 @@ namespace MasterCRM.Controllers
     {
         // GET: Accounts
         public ActionResult Accounts()
-        {
-            ViewData.Add("AccountTypes", AccountTypesBS.GetAccountTypes().OrderBy(ACT => ACT.Descripcion));
-            ViewData.Add("AccountSectors", AccountSectorsBS.GetAccountSectors().OrderBy(ACS => ACS.Descripcion));
+        {            
+            GetViewData();
             return View();
         }
 
@@ -58,6 +57,19 @@ namespace MasterCRM.Controllers
                 iTotalDisplayRecords = iTotalFiltered,
                 aaData = oAccounts.Skip(int.Parse(oCollection.Get("iDisplayStart"))).Take(int.Parse(oCollection.Get("iDisplayLength"))).ToList<Models.AccountsGridModel>()
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetAccountDetail(int? id)
+        {
+            AccountsAddEditModel oAccountEditModel = new AccountsAddEditModel();
+            GetViewData();
+            return PartialView("_AccountsDetail", oAccountEditModel);
+        }
+
+        private void GetViewData()
+        {
+            ViewData.Add("AccountTypes", AccountTypesBS.GetAccountTypes().OrderBy(ACT => ACT.Descripcion));
+            ViewData.Add("AccountSectors", AccountSectorsBS.GetAccountSectors().OrderBy(ACS => ACS.Descripcion));
         }
     }
 }
